@@ -1,18 +1,15 @@
 import express from "express";
-import { PeerServer } from "peer";
+import { ExpressPeerServer } from "peer";
 
 const app = express();
-
-// Statische Dateien (HTML, JS, Sounds) bereitstellen
-app.use(express.static("public"));
-
-// PeerJS-Server unter /funk einbinden
-const peerServer = PeerServer({
-  port: process.env.PORT || 3000,
-  path: "/funk",
-});
+app.use(express.static("public")); // dein public-Ordner
 
 const PORT = process.env.PORT || 3000;
+
+// PeerJS über Express mounten
+const peerServer = ExpressPeerServer(app, { path: '/funk' });
+app.use('/funk', peerServer);
+
 app.listen(PORT, () => {
   console.log(`Server läuft auf Port ${PORT}`);
 });
