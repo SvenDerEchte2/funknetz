@@ -80,7 +80,7 @@ async function joinFunknetz() {
     audioTrack.enabled = false;
 
 peer = new Peer(currentName, {
-  host: "funknetz-c3a9.onrender.com",
+  host: "funknetz-c3a9.onrender.com", // Render URL
   port: 443,
   path: "/funk",
   secure: true
