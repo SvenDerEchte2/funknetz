@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funk-App mit Push-to-Talk</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    #buttons {
+      margin-bottom: 20px;
+    }
+
+    button.name-btn {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button.name-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    #speakingIndicator {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: green;
+      user-select: none;
+      cursor: default;
+    }
+
+    /* Container für beide Bilder */
+    #image-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 1000px; /* Abstand zwischen den Bildern */
+      flex-wrap: wrap;
+    }
+
+    #image-container img {
+      max-height: 700px;
+      max-width: 45vw;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <h1>Funk-App mit Push-to-Talk</h1>
+
+  <div id="buttons">
+    <button class="name-btn" data-name="Florian 1">Florian 1</button>
+    <button class="name-btn" data-name="Florian 2">Florian 2</button>
+    <button class="name-btn" data-name="Florian 3">Florian 3</button>
+    <button class="name-btn" data-name="Florian 4">Florian 4</button>
+    <button class="name-btn" data-name="Florian 5">Florian 5</button>
+  </div>
+
+  <audio id="remoteAudio" autoplay controls style="display:none;"></audio>
+
+  <p><small>Leertaste drücken und halten, um zu sprechen</small></p>
+
+  <div id="speakingIndicator"></div>
+
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script src="funkapp.js"></script>
+</body>
+</html>
